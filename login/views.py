@@ -43,8 +43,11 @@ class LoginView(APIView):
                 user_obj.token = uuid.uuid4()
                 user_obj.save()
                 ret.data = "登录成功"
-            ret.code = 1012
-            ret.error = "用户名或密码错误"
+                ret.code = 1012
+                ret.token = user_obj.token
+
+            else:
+                ret.error = "用户名或密码错误"
 
         except Exception as e:
             ret.code = 1013
