@@ -45,6 +45,7 @@ class CourseView(APIView):
                     # 返回序列化好的数据
                     return Response(ser_obj.data)
             except Exception as e:
+
                 return Response(response_data.token_error)
         return Response(response_data.token_error)
 

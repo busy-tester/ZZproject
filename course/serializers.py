@@ -22,10 +22,10 @@ class CourseSerializer(serializers.ModelSerializer):
         return "http://127.0.0.1:8001/media/" + str(obj.course_img)
 
     def get_price(self, obj):
-        # price_policy = GenericRelation("PricePolicy")
+        # price_policy = obj.GenericRelation("PricePolicy")
         # 拿到PricePolicy表里所有的，通过price排序，拿到第一个，返回它的价格
         price_policy_obj = obj.price_policy.all().order_by("price").first()
-        return price_policy_obj.price
+        # return price_policy_obj.price
 
     class Meta:
         model = models.Course
